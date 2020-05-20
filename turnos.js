@@ -58,12 +58,13 @@ const addTurno = (fecha, especialidad, horario) => {
   turno.reservar(especialidad, horario)
   turnos.push(turno)
   return `Turno reservado: Especialidad: ${especialidad}  Fecha: ${getFecha(fecha)}  Horario:${horario}`
+
 }
 
 const getHorariosLibres = (fecha, especialidad) => {
   let turno = turnos.find(turno => turno.fecha === getFecha(fecha))
   if (turno !== undefined) {
-    turno.getHorariosLibres(especialidad)
+    return turno.getHorariosLibres(especialidad)
   }
   return 'Están disponibles los siguientes horarios: 10:00  11:00  12:00  13:00  14:00. Elija un horario.'
 }
