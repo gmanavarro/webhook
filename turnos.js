@@ -50,7 +50,7 @@ let turnos = [
 
 const getFecha = (fecha) => {
   let date = new Date(fecha)
-  return stringFecha = date.getDate() + '/' + date.getUTCMonth() + 1 + '/' + date.getFullYear()
+  return stringFecha = date.getDate() + '/' + (Number(date.getUTCMonth()) + 1).toString() + '/' + date.getFullYear()
 }
 
 const addTurno = (fecha, especialidad, horario) => {
