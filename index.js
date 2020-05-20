@@ -25,7 +25,7 @@ restService.post("/tp2ia", function (req, res) {
         : "Seems like some problem. Speak again." + req.body;
 
   }
-  if (req.body.queryResult.intent.displayName === 'Consultar-Disponibilidad.Reserva') {
+  if (req.body.queryResult.intent.displayName === 'Reserva') {
     speech =
       req.body.queryResult &&
         req.body.queryResult.parameters &&
