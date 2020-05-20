@@ -1,5 +1,5 @@
-"use strict";
 
+const turnos = require('./turnos.js');
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -21,7 +21,7 @@ restService.post("/tp2ia", function (req, res) {
         req.body.queryResult.parameters &&
         req.body.queryResult.parameters.especialidad &&
         req.body.queryResult.parameters.fecha
-        ? getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        ? turnos.getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
         : "Seems like some problem. Speak again." + req.body;
 
   }
@@ -31,7 +31,7 @@ restService.post("/tp2ia", function (req, res) {
         req.body.queryResult.parameters &&
         req.body.queryResult.parameters.especialidad &&
         req.body.queryResult.parameters.fecha
-        ? getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        ? turnos.getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
         : "Seems like some problem. Speak again." + req.body;
   }
 

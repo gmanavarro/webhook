@@ -28,10 +28,11 @@ class Turno {
   }
 
   getHorariosLibres = (especialidad) => {
-    let resp = ''
+    let resp = 'Están disponibles los siguientes horarios: '
     this.horarios[especialidad].libre.forEach(horario => {
-      resp + horario
+      resp + '  ' + horario
     });
+    resp + '. Elija un horario.'
 
     return resp
   }
@@ -49,15 +50,14 @@ const addTurno = (especialidad, fecha, hora) => {
 }
 
 const getHorariosLibres = (fecha, especialidad) => {
-  let resp
   let turno = turnos.find(turno => turno.fecha === fecha)
   if (turno !== undefined) {
     turno.getHorariosLibres(especialidad)
   }
-  return '10:00, 11:00, 12:00, 13:00, 14:00'
+  return 'Están disponibles los siguientes horarios: 10:00  11:00  12:00  13:00  14:00. Elija un horario.'
 }
 
-export default {
+module.exports = {
   addTurno,
   getHorariosLibres
 };
