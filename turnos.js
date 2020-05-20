@@ -35,9 +35,9 @@ class Turno {
   getHorariosLibres = (especialidad) => {
     let resp = 'Están disponibles los siguientes horarios: '
     this.horarios[especialidad].libre.forEach(horario => {
-      resp + '  ' + horario
+      resp += '  ' + horario
     });
-    resp + '. Elija un horario.'
+    resp += '. Elija un horario.'
 
     return resp
   }
