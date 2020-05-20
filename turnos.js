@@ -23,8 +23,13 @@ class Turno {
   }
 
   reservar = (especialidad, hora) => {
-    let index = this.horarios[especialidad].libre.indexOf(hora)
-    this.horarios[especialidad].libre.splice(index, 1)
+    // let index = this.horarios[especialidad].libre.indexOf(hora)
+    // this.horarios[especialidad].libre.splice(index, 1)
+
+    this.horarios[especialidad].libre = this.horarios[especialidad].libre.filter(horario => horario !== hora)
+    console.log(this.horarios[especialidad].libre)
+
+
   }
 
   getHorariosLibres = (especialidad) => {
@@ -52,7 +57,7 @@ const addTurno = (fecha, especialidad, horario) => {
   let turno = new Turno(getFecha(fecha))
   turno.reservar(especialidad, horario)
   turnos.push(turno)
-  return `Turno reservado: Especialidad: ${especialidad}  Fecha: ${fecha}  Horario:${horario}`
+  return `Turno reservado: Especialidad: ${especialidad}  Fecha: ${getFecha(fecha)}  Horario:${horario}`
 }
 
 const getHorariosLibres = (fecha, especialidad) => {
