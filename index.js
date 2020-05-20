@@ -21,7 +21,10 @@ restService.post("/tp2ia", function (req, res) {
         req.body.queryResult.parameters &&
         req.body.queryResult.parameters.especialidad &&
         req.body.queryResult.parameters.fecha
-        ? turnos.getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        ? turnos.getHorariosLibres(
+          req.body.queryResult.parameters.fecha,
+          req.body.queryResult.parameters.especialidad
+        )
         : "Seems like some problem. Speak again." + req.body;
 
   }
@@ -29,10 +32,14 @@ restService.post("/tp2ia", function (req, res) {
     speech =
       req.body.queryResult &&
         req.body.queryResult.parameters &&
-        req.body.queryResult.parameters.especialidad &&
-        req.body.queryResult.parameters.fecha &&
-        req.body.queryResult.parameters.horario
-        ? turnos.addTurno(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad, req.body.queryResult.parameters.horario)
+        req.body.queryResult.parameters.horario &&
+        req.body.queryResult.outputContexts[0].parameters.especialidad &&
+        req.body.queryResult.outputContexts[0].parameters.fecha
+        ? turnos.addTurno(
+          req.body.queryResult.outputContexts[0].parameters.fecha,
+          req.body.queryResult.outputContexts[0].parameters.especialidad,
+          req.body.queryResult.parameters.horario
+        )
         : "Seems like some problem. Speak again." + req.body;
   }
 
