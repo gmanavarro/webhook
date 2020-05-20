@@ -1,7 +1,5 @@
 "use strict";
 
-import { addTurno, getHorariosLibres } from 'turnos'
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
