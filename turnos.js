@@ -43,15 +43,20 @@ let turnos = [
 
 ]
 
+const getFecha = (fecha) => {
+  let date = new Date(fecha)
+  return stringFecha = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+}
+
 const addTurno = (fecha, especialidad, horario) => {
-  let turno = new Turno(fecha)
+  let turno = new Turno(getFecha(fecha))
   turno.reservar(especialidad, horario)
   turnos.push(turno)
-  return `Turno reservado: Especialidad:${especialidad} Fecha:${fecha} Horario:${horario}`
+  return `Turno reservado: Especialidad: ${especialidad}  Fecha: ${fecha}  Horario:${horario}`
 }
 
 const getHorariosLibres = (fecha, especialidad) => {
-  let turno = turnos.find(turno => turno.fecha === fecha)
+  let turno = turnos.find(turno => turno.fecha === getFecha(fecha))
   if (turno !== undefined) {
     turno.getHorariosLibres(especialidad)
   }
