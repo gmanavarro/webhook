@@ -30,8 +30,9 @@ restService.post("/tp2ia", function (req, res) {
       req.body.queryResult &&
         req.body.queryResult.parameters &&
         req.body.queryResult.parameters.especialidad &&
-        req.body.queryResult.parameters.fecha
-        ? turnos.getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        req.body.queryResult.parameters.fecha &&
+        req.body.queryResult.parameters.horario
+        ? turnos.addTurno(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad, req.body.queryResult.parameters.horario)
         : "Seems like some problem. Speak again." + req.body;
   }
 

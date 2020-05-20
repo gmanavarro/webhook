@@ -43,10 +43,11 @@ let turnos = [
 
 ]
 
-const addTurno = (especialidad, fecha, hora) => {
+const addTurno = (fecha, especialidad, horario) => {
   let turno = new Turno(fecha)
-  turno.reservar(especialidad, hora)
+  turno.reservar(especialidad, horario)
   turnos.push(turno)
+  return `Turno reservado: Especialidad:${especialidad} Fecha:${fecha} Horario:${horario}`
 }
 
 const getHorariosLibres = (fecha, especialidad) => {
