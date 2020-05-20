@@ -6,10 +6,6 @@
 
 # Como funciona?
 - Push this app to Heroku
-- Test the API https://webhookpn1.herokuapp.com/echo - puedes usar https://www.getpostman.com/ para hacer testing
+- Test the API https://webhookpn1.herokuapp.com/tp2ia - se puede usar https://www.getpostman.com/ para hacer testing
 
-Abre - https://dialogflow.com/
-- Crea una cuenta y logueate
 
-# Video
-Mira este video

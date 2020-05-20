@@ -1,5 +1,7 @@
 "use strict";
 
+import { addTurno, getHorariosLibres } from 'turnos'
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -13,30 +15,46 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
-  var speech =
-    req.body.queryResult &&
-    req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.echoText
-      ? req.body.queryResult.parameters.echoText
-      : "Seems like some problem. Speak again."+req.body;
+restService.post("/tp2ia", function (req, res) {
+  let speech
+  if (req.body.intent.displayName === 'Consultar-Disponibilidad') {
+    speech =
+      req.body.queryResult &&
+        req.body.queryResult.parameters &&
+        req.body.queryResult.parameters.especialidad &&
+        req.body.queryResult.parameters.fecha
+        ? getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        : "Seems like some problem. Speak again." + req.body;
+
+  }
+  if (req.body.intent.displayName === 'Consultar-Disponibilidad.Reserva') {
+    speech =
+      req.body.queryResult &&
+        req.body.queryResult.parameters &&
+        req.body.queryResult.parameters.especialidad &&
+        req.body.queryResult.parameters.fecha
+        ? getHorariosLibres(req.body.queryResult.parameters.fecha, req.body.queryResult.parameters.especialidad)
+        : "Seems like some problem. Speak again." + req.body;
+  }
+
+
   return res.json({
 
-  "fulfillmentText": speech,
-  "fulfillmentMessages": [
-    {
-      "text": {
-        "text": [speech]
+    "fulfillmentText": speech,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [speech]
+        }
       }
-    }
-  ],
-  "source": "<webhookpn1>"
+    ],
+    "source": "<webhookpn1>"
 
 
   });
 });
 
 
-restService.listen(process.env.PORT || 8000, function() {
+restService.listen(process.env.PORT || 8000, function () {
   console.log("Server up and listening");
 });
